@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Heart rate Tapper</h2>
+
+<p>click button everytime you feel a beat</p>
+<p id="display"> - - BPM </p>
+<button type="button" onclick="myFunction()">💓💓💓</button>
+
+<script>
+let beats = 0;
+let keepMeasuring = false;
+let display = '- - BPM'
+  
+let getBeat = ()=>{
+    setTimeout(()=>{
+      if (keepMeasuring) {
+            display = `${60*1000*4000} BPM`;
+           getBeat();
+      }
+  },4000);
+}
+function myFunction() {
+  beats++;
+      setTimeout(()=>{
+         beats = 0;
+  },4300);
+  document.getElementById("display").innerHTML = display;
+}
+</script>
+
+</body>
+</html> 
