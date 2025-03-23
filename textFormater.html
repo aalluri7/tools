@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Transformer</title>
+    <style>
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        min-height: 50px;
+      }
+      button {
+        margin: 5px;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Transformer</h1>
+    <textarea
+      id="inputText"
+      rows="5"
+      cols="50"
+      placeholder="Enter your text here..."
+    ></textarea>
+    <br />
+    <button id="camelCaseBtn">camelCase</button>
+    <button id="pascalCaseBtn">PascalCase</button>
+    <button id="snakeCaseBtn">snake_case</button>
+    <button id="kebabCaseBtn">kebab-case</button>
+    <button id="upperCaseBtn">UPPERCASE</button>
+    <button id="lowerCaseBtn">lowercase</button>
+    <button id="titleCaseBtn">Title Case</button>
+    <div id="output"></div>
+
+    <script>
+      // Get DOM elements
+      const inputText = document.getElementById("inputText")
+      const output = document.getElementById("output")
+      const camelCaseBtn = document.getElementById("camelCaseBtn")
+      const pascalCaseBtn = document.getElementById("pascalCaseBtn")
+      const snakeCaseBtn = document.getElementById("snakeCaseBtn")
+      const kebabCaseBtn = document.getElementById("kebabCaseBtn")
+      const upperCaseBtn = document.getElementById("upperCaseBtn")
+      const lowerCaseBtn = document.getElementById("lowerCaseBtn")
+      const titleCaseBtn = document.getElementById("titleCaseBtn")
+
+      // Function to convert text to camel case
+      function toCamelCase(text) {
+        const words = text.split(" ").filter((word) => word.length > 0)
+        if (words.length === 0) return ""
+        let result = words[0].toLowerCase()
+        for (let i = 1; i < words.length; i++) {
+          const word = words[i]
+          result += word[0].toUpperCase() + word.slice(1).toLowerCase()
+        }
+        return result
+      }
+
+      // Function to convert text to pascal case
+      function toPascalCase(text) {
+        const words = text.split(" ").filter((word) => word.length > 0)
+        if (words.length === 0) return ""
+        let result = ""
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i]
+          result += word[0].toUpperCase() + word.slice(1).toLowerCase()
+        }
+        return result
+      }
+
+      // Function to convert text to snake case
+      function toSnakeCase(text) {
+        const words = text.split(" ").filter((word) => word.length > 0)
+        if (words.length === 0) return ""
+        return words.map((word) => word.toLowerCase()).join("_")
+      }
+
+      // Function to convert text to kebab case
+      function toKebabCase(text) {
+        const words = text.split(" ").filter((word) => word.length > 0)
+        if (words.length === 0) return ""
+        return words.map((word) => word.toLowerCase()).join("-")
+      }
+
+      // Function to convert text to uppercase
+      function toUpperCase(text) {
+        return text.toUpperCase()
+      }
+
+      // Function to convert text to lowercase
+      function toLowerCase(text) {
+        return text.toLowerCase()
+      }
+
+      // Function to convert text to title case
+      function toTitleCase(text) {
+        const words = text.split(" ").filter((word) => word.length > 0)
+        const titledWords = words.map(
+          (word) => word[0].toUpperCase() + word.slice(1).toLowerCase(),
+        )
+        return titledWords.join(" ")
+      }
+
+      // Event listeners for buttons
+      camelCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toCamelCase(text)
+      })
+
+      pascalCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toPascalCase(text)
+      })
+
+      snakeCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toSnakeCase(text)
+      })
+
+      kebabCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toKebabCase(text)
+      })
+
+      upperCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toUpperCase(text)
+      })
+
+      lowerCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toLowerCase(text)
+      })
+
+      titleCaseBtn.addEventListener("click", () => {
+        const text = inputText.value
+        output.textContent = toTitleCase(text)
+      })
+    </script>
+  </body>
+</html>
