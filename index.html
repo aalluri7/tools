@@ -1,48 +1,51 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-
-  <h2>Heart rate Tapper</h2>
-
-  <p>click button everytime you feel a bet</p>
-  <p id="display"> - - BPM </p>
-  <button type="button" onclick="myFunction()">💓💓💓</button>
-
-  <script>
-    let beats = 0;
-    let display = '- - sdfsdf'
-    let tapping = false;
-    let timeId;
-    let timeIntervalStart = 0;
-
-    function myFunction() {
-      beats++;
-      if (tapping === false) {
-        tapping = true;
-        timeIntervalStart = new Date().getTime();
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Tool Box</title>
+    <style>
+      h1 {
+        text-align: center;
       }
-      let curTime = new Date().getTime();
-      let elapsedTime = curTime - timeIntervalStart;
-      if (beats > 0) {
-        display = `${Math.floor(60*1000* beats / (elapsedTime)) } BPM`;
-        document.getElementById("display").innerHTML = display;
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
       }
-      if (elapsedTime > 5 * 1000) {
-        timeIntervalStart = curTime;
-        beats = 0;
+      .tools-container {
+        display: flex;
+        justify-content: center;
       }
-      tapping = true;
-      if (timeId) {
-        clearTimeout(timeId);
+      .tool {
+        width: 45%;
+        padding: 8px;
       }
-      timeId = setTimeout(() => {
-        tapping = false;
-        beats = 0;
-      }, 3 * 1000);
-    }
-  </script>
-
-</body>
-
+      .tool-iframe {
+        width: 100%;
+        height: 600px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dev Tool Box</h1>
+    <div class="tools-container">
+      <div class="tool">
+        <h2>Text Formatter</h2>
+        <iframe
+          class="tool-iframe"
+          src="https://aalluri7.github.io/tools/textFormater.html"
+          title="Text Formatter Tool"
+        ></iframe>
+      </div>
+      <div class="tool">
+        <h2>Heart Rate</h2>
+        <iframe
+          class="tool-iframe"
+          src="https://aalluri7.github.io/tools/heartRate.html"
+          title="Heart Rate Tool"
+        ></iframe>
+      </div>
+    </div>
+  </body>
 </html>
