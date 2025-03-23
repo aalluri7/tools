@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h2>Heart rate Tapper</h2>
+
+  <p>click button everytime you feel a bet</p>
+  <p id="display"> - - BPM </p>
+  <button type="button" onclick="myFunction()">💓💓💓</button>
+
+  <script>
+    let beats = 0;
+    let display = '- - sdfsdf'
+    let tapping = false;
+    let timeId;
+    let timeIntervalStart = 0;
+
+    function myFunction() {
+      beats++;
+      if (tapping === false) {
+        tapping = true;
+        timeIntervalStart = new Date().getTime();
+      }
+      let curTime = new Date().getTime();
+      let elapsedTime = curTime - timeIntervalStart;
+      if (beats > 0) {
+        display = `${Math.floor(60*1000* beats / (elapsedTime)) } BPM`;
+        document.getElementById("display").innerHTML = display;
+      }
+      if (elapsedTime > 5 * 1000) {
+        timeIntervalStart = curTime;
+        beats = 0;
+      }
+      tapping = true;
+      if (timeId) {
+        clearTimeout(timeId);
+      }
+      timeId = setTimeout(() => {
+        tapping = false;
+        beats = 0;
+      }, 3 * 1000);
+    }
+  </script>
+
+</body>
+
+</html>
